@@ -1,11 +1,17 @@
 #redis client ofr python
-import redis
+
 #flask to expose api's to outside world
 from flask import Flask,request,jsonify
 app = Flask("autocomplete")
+import redis
+import socket
+import os
+import json
 
+
+REDIS_HOST=os.environ.get('REDIS_HOST', 'localhost')
 #creating a redis connection
-r = redis.StrictRedis(host='localhost', port=7001, db=0)
+r = redis.StrictRedis(host=REDIS_HOST , port=6379, db=0)
 
 #route to add a value to autocomplete list
 '''
@@ -56,7 +62,8 @@ def get_suggestions():
      
     return jsonify(results)
 
-
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug=True)
 '''
 Start the Application through cmd:
 export FLASK_APP=<path to python file>/auto-complete_redis.py
