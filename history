@@ -1,0 +1,2 @@
+docker run --name vishal -p 5000:5000 -d -e REDIS_HOST=128.199.22.56 vishal/auto
+docker run --name some-redis -p 6379:6379 -d redis
